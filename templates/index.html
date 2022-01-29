@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}WeatherApp{% endblock title %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 m-auto">
+            <form action="" method="post" class="my-5">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input type="text" class="form-control" name="city" placeholder="City Name">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Search <i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                {% if data.country_code %}
+                <div class="col-8">
+                    <h1>{{city|title}}</h1>
+                    <h3>Country code : {{data.country_code}}</h3>
+                    <h5>coordinate: {{data.coordinate}}</h5>
+                    <h5>temp: {{data.temp}}</h5>
+                    <h5>pressure: {{data.pressure}}</h5>
+                    <h5>humidity: {{data.humidity}}</h5>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}
